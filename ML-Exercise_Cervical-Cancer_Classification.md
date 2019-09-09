@@ -93,8 +93,7 @@ from sklearn.tree import export_graphviz
 import pydotplus
 ```
 
-    C:\Users\Mystycalpha\Anaconda3\lib\site-packages\sklearn\externals\six.py:31: DeprecationWarning: The module is deprecated in version 0.21 and will be removed in version 0.23 since we've dropped support for Python 2.7. Please rely on the official version of six (https://pypi.org/project/six/).
-      "(https://pypi.org/project/six/).", DeprecationWarning)
+ 
     
 
 ## Load the Dataset
@@ -114,19 +113,6 @@ df.head()
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -341,19 +327,6 @@ df.describe()
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -697,6 +670,7 @@ print("Shape of X_train:", X_train.shape, "\tShape of X_test:", X_test.shape,
     
 
 ### Scaling the data using MinMax Scaler
+This is performed to make the magnitude of the data more uniform and consistent.
 
 
 ```python
@@ -765,13 +739,6 @@ logreg = LogisticRegression()
 logreg.fit(X_train_sdf, y_train)
 ```
 
-    C:\Users\Mystycalpha\Anaconda3\lib\site-packages\sklearn\linear_model\logistic.py:432: FutureWarning: Default solver will be changed to 'lbfgs' in 0.22. Specify a solver to silence this warning.
-      FutureWarning)
-    
-
-
-
-
     LogisticRegression(C=1.0, class_weight=None, dual=False, fit_intercept=True,
                        intercept_scaling=1, l1_ratio=None, max_iter=100,
                        multi_class='warn', n_jobs=None, penalty='l2',
@@ -795,19 +762,6 @@ coef.sort_values(by="| Coef |", ascending=False)
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -1028,7 +982,7 @@ confmatrix(logreg_pred,"Logistic Regression - Cancer - Confusion Matrix")
 ```
 
 
-![png](output_36_0.png)
+![Logistic Regression - Cancer - Confusion Matrix](Images/output_36_0.png)
 
 
 #### Cross-validation of the Logistic Regression model
@@ -1040,31 +994,10 @@ logreg_cv = np.mean(cross_val_score(logreg, X_cv_sdf, y, cv=10)) * 100
 print("Cross-Validation Scorev (10 folds):", logreg_cv)
 ```
 
-    C:\Users\Mystycalpha\Anaconda3\lib\site-packages\sklearn\linear_model\logistic.py:432: FutureWarning: Default solver will be changed to 'lbfgs' in 0.22. Specify a solver to silence this warning.
-      FutureWarning)
-    C:\Users\Mystycalpha\Anaconda3\lib\site-packages\sklearn\linear_model\logistic.py:432: FutureWarning: Default solver will be changed to 'lbfgs' in 0.22. Specify a solver to silence this warning.
-      FutureWarning)
-    C:\Users\Mystycalpha\Anaconda3\lib\site-packages\sklearn\linear_model\logistic.py:432: FutureWarning: Default solver will be changed to 'lbfgs' in 0.22. Specify a solver to silence this warning.
-      FutureWarning)
-    C:\Users\Mystycalpha\Anaconda3\lib\site-packages\sklearn\linear_model\logistic.py:432: FutureWarning: Default solver will be changed to 'lbfgs' in 0.22. Specify a solver to silence this warning.
-      FutureWarning)
-    C:\Users\Mystycalpha\Anaconda3\lib\site-packages\sklearn\linear_model\logistic.py:432: FutureWarning: Default solver will be changed to 'lbfgs' in 0.22. Specify a solver to silence this warning.
-      FutureWarning)
-    C:\Users\Mystycalpha\Anaconda3\lib\site-packages\sklearn\linear_model\logistic.py:432: FutureWarning: Default solver will be changed to 'lbfgs' in 0.22. Specify a solver to silence this warning.
-      FutureWarning)
-    
-
     Cross-Validation Scorev (10 folds): 98.29761904761905
     
 
-    C:\Users\Mystycalpha\Anaconda3\lib\site-packages\sklearn\linear_model\logistic.py:432: FutureWarning: Default solver will be changed to 'lbfgs' in 0.22. Specify a solver to silence this warning.
-      FutureWarning)
-    C:\Users\Mystycalpha\Anaconda3\lib\site-packages\sklearn\linear_model\logistic.py:432: FutureWarning: Default solver will be changed to 'lbfgs' in 0.22. Specify a solver to silence this warning.
-      FutureWarning)
-    C:\Users\Mystycalpha\Anaconda3\lib\site-packages\sklearn\linear_model\logistic.py:432: FutureWarning: Default solver will be changed to 'lbfgs' in 0.22. Specify a solver to silence this warning.
-      FutureWarning)
-    C:\Users\Mystycalpha\Anaconda3\lib\site-packages\sklearn\linear_model\logistic.py:432: FutureWarning: Default solver will be changed to 'lbfgs' in 0.22. Specify a solver to silence this warning.
-      FutureWarning)
+
     
 
 ### K-Nearest Neighbor
@@ -1168,7 +1101,7 @@ confmatrix(knn_pred,"KNN - Cancer - Confusion Matrix")
 ```
 
 
-![png](output_47_0.png)
+![KNN - Cancer - Confusion Matrix](Images/output_47_0.png)
 
 
 #### Cross-validation of the KNN model
@@ -1195,8 +1128,6 @@ dtree = tree.DecisionTreeClassifier() #criterion="gini", min_samples_split=2, mi
 ### Train the model
 dtree.fit(X_train_sdf,y_train)
 ```
-
-
 
 
     DecisionTreeClassifier(class_weight=None, criterion='gini', max_depth=None,
@@ -1259,7 +1190,7 @@ confmatrix(dtree_pred,"DTree - Cancer - Confusion Matrix")
 ```
 
 
-![png](output_57_0.png)
+![DTree - Cancer - Confusion Matrix](Images/output_57_0.png)
 
 
 #### Visualize Decision Tree model
@@ -1285,7 +1216,7 @@ Image(graph.create_png())
 
 
 
-![png](output_59_0.png)
+![Visualize Decision Tree](Images/output_59_0.png)
 
 
 
@@ -1299,19 +1230,6 @@ pd.DataFrame(dtree.feature_importances_, index = X_train.columns,
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -1457,19 +1375,6 @@ summary
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
